@@ -5,11 +5,11 @@ const injectSignIn = () => {
   signInContainer.innerHTML = `
         <h1 id="CK-signin-heading">Please Sign In</h1>
         <p id="CK-signin-message">Sign in to Commerce Karam to rate your customers and view customer ratings.</p>
-        <button id="CK-signin-btn"><a href="http://localhost:3000/sign-in?redrict_url=${window.location.href}" id="CK-signin-link">Sign In</a></button>
+        <button id="CK-signin-btn"><a href="http://localhost:3000/sign-in?redirect_url=${window.location.href}" id="CK-signin-link">Sign In</a></button>
     `;
 };
 
-// Utils
+// Utilsx
 
 const arrayToKeyValueObject = (arr) => {
   if (arr.length % 2 !== 0) {
@@ -301,6 +301,10 @@ const checkAuth = async (users, reviews) => {
     injectSignIn();
   }
 };
+
+
+// Exports
+export {injectReviews, injectSignIn, injectSearch, checkAuth}
 
 document.addEventListener("DOMContentLoaded", async () => {
   const reviews = await injectReviews();

@@ -4,15 +4,13 @@ Commerce Karma components allow you to embed the functionality of Commerce Karma
 
 ## Installation
 
-### Automatic Installation (Recommended)
+<!-- ### Automatic Installation (Recommended)
 
 Insert a script tag into the `head` or the end of the `body` tag of your HTML markup:
 
 ```
 <script src="https://cdn.jsdelivr.net/ADD ASAP"></script>
-```
-
-### Manual Installation
+``` -->
 
 Clone this repository into to the root directory of your project project by running:
 
@@ -23,10 +21,10 @@ git clone https://github.com/eTech-Source/commerce-karma-components.git
 Then add the same script tag anywhere you want to use these components:
 
 ```
-<script src="/commerce-karma-components/script.js"></script>
+<script src="/commerce-karma-components/script.js" type="module"></script>
 ```
 
-**Note:** This approach is not recommended unless you need to modify the source code or change or any of the assets like the stars images. This option is not required to change the styles of the components. However, it does allow for full on premise hosting.
+**Note:** Id your project has an `src` folder clone this project there.
 
 ## Usage
 
@@ -38,6 +36,13 @@ Currently nothing will render. This because you have not selected where you want
 ```
 
 All id's and classes used by the component will need to be prefixed with `CK-`.
+
+Now import your desired component:
+
+```
+// Import from the directory you installed commerce-karma-components in
+import { injectSearch, checkAuth, injectUser } from './commerce-karma-components/script';
+```
 
 Still nothing will appear will appear. Each component has a corresponding function required to render it. For example:
 
@@ -220,6 +225,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 None.
 
-## Usage With Other React.js
+## Usage With React.js and Other JavaScript Frameworks
 
-This library requires the `document` and `window` API.
+This library requires the `document` and `window` API. Follow the same instructions but wrap the functions in a `useEffect` hook.
+
+```
+function App() {
+  useEffect (() => {
+    document.addEventListener("DOMContentLoaded", async () => {
+      const users = await injectUser();
+      checkAuth (users)
+    });
+  })
+  return (
+    <div className="App">
+      <div id="CK-users"></div>
+      <div id="CK-signin"></div>
+    </div>
+  );
+}
+```
+
+Or for any other JavaScript frameworks search for how to use the document API in your JavaScript framework.
