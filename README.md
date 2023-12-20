@@ -4,7 +4,7 @@ Commerce Karma components allow you to embed the functionality of Commerce Karma
 
 ## Examples
 
-Go to the `index.html` file for a basic example. 
+Go to the `index.html` file for a basic example. Also check `styles.css` for example styling.
 
 ## Installation
 
