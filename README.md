@@ -2,6 +2,10 @@
 
 Commerce Karma components allow you to embed the functionality of Commerce Karma in your application while still being able to add your own custom styling and being able to place them anywhere. These components work on all main stream JavaScript frameworks.
 
+## Examples
+
+Go to the `index.html` file for a basic example. 
+
 ## Installation
 
 <!-- ### Automatic Installation (Recommended)

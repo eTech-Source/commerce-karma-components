@@ -1,0 +1,120 @@
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote,
+dl,
+dd,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set base font size and family */
+body {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Basic styling for container */
+#CK-signin,
+#CK-reviews,
+#CK-search,
+#CK-users,
+#CK-create-user {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for headings */
+#CK-signin-heading,
+#CK-reviews .CK-review-title,
+.Ck-review-text,
+#CK-search-bar,
+#CK-option,
+#CK-user-link,
+#CK-user-name,
+#CK-stars,
+#CK-profile-picture {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Style for paragraphs */
+#CK-signin-message {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Style for lists */
+#CK-search-options,
+#CK-user,
+#CK-review {
+  margin-bottom: 20px;
+}
+
+/* Style for list items */
+#CK-option,
+#CK-user-link,
+#CK-user,
+#CK-review,
+#CK-review-title,
+.Ck-review-text {
+  margin-bottom: 5px;
+}
+
+/* Style for links */
+#CK-signin-link {
+  color: #007bff;
+}
+
+/* Style for buttons */
+#CK-create-user-btn,
+#CK-signin-btn {
+  cursor: pointer;
+  padding: 10px 15px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#CK-create-user-btn:hover,
+#CK-signin-btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Style for form elements */
+#CK-create-user-form,
+.CK-create-user-input,
+#CK-search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Style for form buttons */
+#CK-create-user-btn,
+#CK-signin-btn {
+  width: 100%;
+  box-sizing: border-box;
+}
