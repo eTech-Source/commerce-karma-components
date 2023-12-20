@@ -1,4 +1,4 @@
-const commerceKarmaUrl = "http://localhost:3000"
+const commerceKarmaUrl = "https://commerce-karma.vercel.app"
 
 // Must be defined first
 
@@ -285,8 +285,6 @@ const injectCreateReview = async () => {
       const stars = document.getElementById("CK-create-review-stars").value;
       const title = document.getElementById("CK-create-review-title").value;
       const text = document.getElementById("CK-create-review-text").value;
-
-      console.log(stars, title, text);
     });
   });
 };
