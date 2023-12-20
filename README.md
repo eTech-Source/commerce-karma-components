@@ -68,7 +68,54 @@ Note that `users` or review component is required on the same page in order to r
 
 Here is a short list of all the components:
 
+### Create User
+
+A button or form (you will see it can be either) to add a user.
+
+#### Basic Usage
+
+Add a `div` tag to your project with an id called `CK-create-user`. 
+
+```
+<div id="CK-reviews"></div>
+```
+
+Then call the `injectCreateUser` function. 
+
+```
+document.addEventListener("DOMContentLoaded", async () => {
+  await injectCreateUser();
+});
+```
+
+#### Function Arguments
+
+- **Optional** `name` The user's name.
+- **Optional** `email` The user's email.
+- **Optional** `city` The user's city.
+
+**Note:** If you pass one argument then all need to be passed. Including just one argument has no effect. Check built in functionality for more information.
+
+#### Styling 
+
+- **ID** `CK-create-user` The parent element of the add user form/button.
+
+##### When a button is being rendered
+
+- **ID** `CK-create-user-btn` The button to add a user to Commerce Karma; child of `CK-create-user`.
+
+##### When a form is being rendered
+
+- **ID** `CK-create-user-form` The form to enter user information into; child of `CK-create-user`.
+- **Class** `CK-create-user-input` The form input; child of `CK-create-user-form`.
+- **ID** `CK-create-user-btn` The form button; child of `CK-create-user-form`.
+
+#### Built in functionality
+
+When all props are rendered, a create user button will be rendered. However, if some or no props are rendered a create user form will be rendered instead.
+
 ### Reviews Component
+
 Renders a review written by a user of Commerce Karma.
 
 #### Basic Usage
@@ -119,7 +166,7 @@ Then call the `injectSearch` function.
 
 ```
 document.addEventListener("DOMContentLoaded", async () => {
-  const reviews = await injectUsers();
+  await injectSearch ();
 });
 ```
 
@@ -154,7 +201,7 @@ Then call the `injectUsers` function.
 
 ```
 document.addEventListener("DOMContentLoaded", async () => {
-  const reviews = await injectUsers();
+  const users = await injectUsers();
 });
 ```
 
@@ -183,6 +230,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 #### Built in functionality
 
+On click `id` query parameter is appended to the url. 
 
 ### Sign In Component
 
@@ -200,7 +248,6 @@ Then call the `checkAuth` function.
 
 ```
 document.addEventListener("DOMContentLoaded", async () => {
-  const users = await injectUser();
   checkAuth (users)
 });
 ```
@@ -237,6 +284,7 @@ function App() {
       checkAuth (users)
     });
   })
+
   return (
     <div className="App">
       <div id="CK-users"></div>

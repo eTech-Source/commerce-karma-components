@@ -1,3 +1,5 @@
+const commerceKarmaUrl = "http://localhost:3000"
+
 // Must be defined first
 
 const injectSignIn = () => {
@@ -5,11 +7,11 @@ const injectSignIn = () => {
   signInContainer.innerHTML = `
         <h1 id="CK-signin-heading">Please Sign In</h1>
         <p id="CK-signin-message">Sign in to Commerce Karam to rate your customers and view customer ratings.</p>
-        <button id="CK-signin-btn"><a href="http://localhost:3000/sign-in?redirect_url=${window.location.href}" id="CK-signin-link">Sign In</a></button>
+        <button id="CK-signin-btn"><a href="${commerceKarmaUrl}/sign-in?redirect_url=${window.location.href}" id="CK-signin-link">Sign In</a></button>
     `;
 };
 
-// Utilsx
+// Utils
 
 const arrayToKeyValueObject = (arr) => {
   if (arr.length % 2 !== 0) {
@@ -115,7 +117,7 @@ const post = async (createData, url) => {
   const authorization = readCookie("CK-jwt");
 
   const rawResponse = await fetch(url, {
-    body: JSON.stringify(createData),
+    body: JSON.stringify({body: createData}),
     method: "POST",
     headers: { Authorization: authorization },
   });
@@ -132,8 +134,8 @@ const injectReviews = async () => {
 
   const data = await get(
     "",
-    id ? { author: id } : null,
-    "http://localhost:3000/api/reviews/add"
+    id ? { recipient: id } : null,
+    `${commerceKarmaUrl}/api/reviews/add`
   );
 
   if (data.error) {
@@ -177,7 +179,7 @@ const injectUser = async (link, filters) => {
   const data = await get(
     "",
     filters ? filters : {},
-    "http://localhost:3000/api/user"
+    `${commerceKarmaUrl}/api/user`
   );
 
   if (data.error) {
@@ -226,6 +228,8 @@ const injectSearch = async () => {
     window.location.search = urlParams;
   };
 };
+
+// This is currently unavailable
 
 const injectCreateReview = async () => {
   const createReviewContainer = document.getElementById("CK-create-review");
@@ -287,6 +291,51 @@ const injectCreateReview = async () => {
   });
 };
 
+const injectCreateUser = (name, email, city) => {
+  const createUserContainer = document.getElementById("CK-create-user")
+    if (name && email && city) {
+      createUserContainer.innerHTML = `
+        <button id="CK-create-user-btn">Add to Commerce Karma</button>
+      `
+      const createUserBtn = document.getElementById("CK-create-user-btn")
+      createUserBtn.addEventListener ("click", async () => {
+        await post ({name, email, city}, `${commerceKarmaUrl}/api/user`)
+      })
+      return
+    }
+    createUserContainer.innerHTML = `
+      <form id="CK-create-user-form">
+        <label>Name</label>
+        <input class="CK-create-user-input" id="CK-name"/>
+        <br />
+        <label>Email</label>
+        <input class="CK-create-user-input" id="CK-email"/>
+        <br />
+        <label>City</label>
+        <input class="CK-create-user-input" id="CK-city"/>
+        <button id="CK-submit-user-btn">Submit</button>
+      </form>
+    `
+
+    const nameInput = document.getElementById ("CK-name")
+    const emailInput = document.getElementById ("CK-email")
+    const cityInput = document.getElementById ("CK-city")
+
+    const submitBtn = document.getElementById ("CK-submit-user-btn")
+    submitBtn.addEventListener ("click", async (e) => {
+      e.preventDefault ()
+      await post ({name: nameInput.value, email: emailInput.value, city: cityInput.value}, `${commerceKarmaUrl}/api/user`)
+    })
+
+}
+
+const injectMoreInfo = () => {
+  const infoContainer = document.getElementById ("CK-info")
+  infoContainer.innerHTML = `
+    <p id="CK-info-text">For more actions go to the officail <a href="${commerceKarmaUrl}/app">Commerce Karma</a> website.</p>
+  `
+}
+
 // Authentication: DO NOT MODIFY
 
 const url = window.location.href;
@@ -302,14 +351,15 @@ const checkAuth = async (users, reviews) => {
   }
 };
 
-
-// Exports
-export {injectReviews, injectSignIn, injectSearch, checkAuth}
-
 document.addEventListener("DOMContentLoaded", async () => {
   const reviews = await injectReviews();
   const users = await injectUser();
-  injectCreateReview();
   injectSearch();
+  injectCreateUser()
+  injectMoreInfo()
   await checkAuth(users, reviews);
 });
+
+
+// // Exports
+// export {injectReviews, injectSignIn, injectSearch, checkAuth}
