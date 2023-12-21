@@ -28,7 +28,7 @@ Then add the same script tag anywhere you want to use these components:
 <script src="/commerce-karma-components/script.js" type="module"></script>
 ```
 
-**Note:** Id your project has an `src` folder clone this project there.
+**Note:** If your project has an `src` folder clone this project there.
 
 ## Usage
 
@@ -45,7 +45,7 @@ Now import your desired component:
 
 ```
 // Import from the directory you installed commerce-karma-components in
-import { injectSearch, checkAuth, injectUser } from './commerce-karma-components/script';
+import { injectSearch, checkAuth, injectUser } from "./commerce-karma-components/script";
 ```
 
 Still nothing will appear will appear. Each component has a corresponding function required to render it. For example:
