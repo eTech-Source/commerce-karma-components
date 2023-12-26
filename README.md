@@ -1,4 +1,9 @@
 # Commerce Karma Components
+# The docs are not complete
+
+This package is still used internally. This package is still under development and is not supported. Everything is subjected to change. The package will be supported once Commerce Karma is released.
+
+# The current docs
 
 Commerce Karma components allow you to embed the functionality of Commerce Karma in your application while still being able to add your own custom styling and being able to place them anywhere. These components work on all main stream JavaScript frameworks.
 
